@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sora AI Video Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Sora AI Video Generator</h1>
+    <p>Create stunning AI videos from text prompts</p>
+  </header>
+
+  <main>
+    <form id="videoForm">
+      <label for="prompt">Enter your video prompt:</label>
+      <textarea id="prompt" rows="4" placeholder="A futuristic city at sunset..."></textarea>
+      <button type="submit">Generate Video</button>
+    </form>
+
+    <section id="videoOutput">
+      <h2>Generated Video</h2>
+      <video id="aiVideo" controls></video>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
