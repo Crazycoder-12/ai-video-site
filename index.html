@@ -9,18 +9,19 @@
 <body>
   <header>
     <h1>Sora AI Video Generator</h1>
-    <p>Create stunning AI videos from text prompts</p>
+    <p>Generate AI-powered videos from text prompts</p>
   </header>
 
   <main>
     <form id="videoForm">
       <label for="prompt">Enter your video prompt:</label>
-      <textarea id="prompt" rows="4" placeholder="A futuristic city at sunset..."></textarea>
+      <textarea id="prompt" rows="4" placeholder="A neon-lit cyberpunk alley at night..."></textarea>
       <button type="submit">Generate Video</button>
     </form>
 
     <section id="videoOutput">
       <h2>Generated Video</h2>
+      <div id="loading">⏳ Generating video...</div>
       <video id="aiVideo" controls></video>
     </section>
   </main>
