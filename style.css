@@ -1,0 +1,51 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: #eee;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  text-align: center;
+  padding: 2rem;
+  background: #222;
+}
+
+main {
+  padding: 2rem;
+  max-width: 600px;
+  margin: auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+textarea {
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+}
+
+button {
+  padding: 1rem;
+  font-size: 1rem;
+  background: #00bcd4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0097a7;
+}
+
+#videoOutput {
+  margin-top: 2rem;
+  display: none;
+}
