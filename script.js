@@ -16,16 +16,17 @@ document.getElementById("videoForm").addEventListener("submit", async (e) => {
   videoElement.src = "";
 
   try {
+    const formData = new FormData();
+    formData.append("model", "sora-2");
+    formData.append("prompt", prompt);
+
     const response = await fetch("https://api.openai.com/v1/videos", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
         "Authorization": "Bearer YOUR_API_KEY_HERE"
+        // Do NOT set Content-Type manually — browser sets it for FormData
       },
-      body: JSON.stringify({
-        prompt: prompt,
-        duration: 10 // optional: adjust as needed
-      })
+      body: formData
     });
 
     if (!response.ok) {
@@ -33,8 +34,6 @@ document.getElementById("videoForm").addEventListener("submit", async (e) => {
     }
 
     const data = await response.json();
-
-    // Replace with actual key if different
     const videoUrl = data.video_url;
 
     if (!videoUrl) {
