@@ -3,19 +3,19 @@ document.getElementById("videoForm").addEventListener("submit", async (e) => {
   const prompt = document.getElementById("prompt").value.trim();
   const videoElement = document.getElementById("aiVideo");
   const videoSection = document.getElementById("videoOutput");
+  const loadingText = document.getElementById("loading");
 
   if (!prompt) {
     alert("Please enter a video prompt.");
     return;
   }
 
-  try {
-    // Show loading message
-    videoSection.style.display = "block";
-    videoElement.poster = "";
-    videoElement.src = "";
-    videoElement.innerHTML = "<p>Generating video...</p>";
+  videoSection.style.display = "block";
+  loadingText.style.display = "block";
+  videoElement.style.display = "none";
+  videoElement.src = "";
 
+  try {
     const response = await fetch("https://api.openai.com/v1/videos", {
       method: "POST",
       headers: {
@@ -24,7 +24,7 @@ document.getElementById("videoForm").addEventListener("submit", async (e) => {
       },
       body: JSON.stringify({
         prompt: prompt,
-        duration: 10 // optional: set duration in seconds
+        duration: 10 // optional: adjust as needed
       })
     });
 
@@ -34,12 +34,20 @@ document.getElementById("videoForm").addEventListener("submit", async (e) => {
 
     const data = await response.json();
 
-    // Assuming the API returns a video URL in data.video_url
-    videoElement.src = data.video_url;
+    // Replace with actual key if different
+    const videoUrl = data.video_url;
+
+    if (!videoUrl) {
+      throw new Error("No video URL returned.");
+    }
+
+    videoElement.src = videoUrl;
+    videoElement.style.display = "block";
     videoElement.load();
     videoElement.play();
+    loadingText.style.display = "none";
   } catch (error) {
     console.error("Video generation failed:", error);
-    alert("Failed to generate video. Check console for details.");
+    loadingText.textContent = "❌ Failed to generate video. Check console for details.";
   }
 });
